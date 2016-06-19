@@ -1,0 +1,29 @@
+
+[core]
+    editor = vi
+    excludesfile = ~/.gitignore
+
+[color]
+    ui = auto
+
+[push]
+    default = current
+
+[credential]
+    helper = cache --timeout=3600
+
+[grep]
+    lineNumber = true
+
+[branch]
+    autosetuprebase = remote
+
+[merge]
+    conflictstyle = diff3
+
+[rerere]
+    enabled = 0
+
+# Allow some extra overrides specific to this install [from separate repo]
+ [include]
+   path = ~/.gitconfig_extras
