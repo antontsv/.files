@@ -1,0 +1,8 @@
+# Backup files
+backup*/
+
+.project
+.idea/
+.idea_modules/
+.swp
+.DS_Store
