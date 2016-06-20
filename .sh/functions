@@ -1,6 +1,10 @@
 
-# Switch between different JDKs (see companion alias java-ls)
 function java-use() {
+    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "" ];then
+        echo "Usage: java-use java_version_string"
+        echo "Switch between different JDKs (see companion alias java-ls)"
+        return 1;
+    fi;
     export JAVA_HOME=$(/usr/libexec/java_home -v $1)
     export PATH=$JAVA_HOME/bin:$PATH
     java -version
