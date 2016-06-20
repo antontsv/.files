@@ -1,0 +1,39 @@
+# History
+export HISTSIZE=20000;
+export HISTFILESIZE="${HISTSIZE}";
+# Do not keep duplicates, 
+# and do not save commands that start with a space
+export HISTCONTROL=ignoreboth:erasedups 
+
+export JAVA_HOME=`/usr/libexec/java_home`
+
+# Colors
+export CLICOLOR=1
+export GREP_COLOR='01;32'
+export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
+
+export GREEN_COLOR=$'\033[1;32m'
+export RED_COLOR=$'\033[1;31m'
+export RESET_COLOR=$'\033[m'
+
+export EDITOR=vim
+
+# Leave can contents in the window when man exits
+export MANPAGER='less -X';
+
+# Language
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US"
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Do not autocomplete when accidentally pressing Tab on an empty line.
+shopt -s no_empty_cmd_completion
+
+# Autocorrect typos in path names when using `cd`
+shopt -s cdspell
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob

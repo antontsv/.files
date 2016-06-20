@@ -1,0 +1,20 @@
+
+# Switch between different JDKs (see companion alias java-ls)
+function java-use() {
+    export JAVA_HOME=$(/usr/libexec/java_home -v $1)
+    export PATH=$JAVA_HOME/bin:$PATH
+    java -version
+}
+
+GREEN_COLOR=$'\033[1;32m'
+RED_COLOR=$'\033[1;31m'
+RESET_COLOR=$'\033[m'
+_last_cmd_ps1(){
+    last_command_exit_status=$?
+    if [ "$last_command_exit_status" -eq 0 ]
+    then
+        echo -en "${GREEN_COLOR}↑ ✔${RESET_COLOR} "
+    else
+        echo -en "${RED_COLOR}↑ ✘${RESET_COLOR} "
+    fi
+}

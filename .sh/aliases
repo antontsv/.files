@@ -1,0 +1,22 @@
+# Nagivation
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias -- -='cd -'                  # Go to previous dir with -
+
+# List declared aliases, functions
+
+alias list_aliases="alias | sed 's/=.*//'"
+alias list_functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non _prefixed functions
+
+# Request using GET, POST, etc. method
+
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "$method"="lwp-request -m '$method'"
+done
+
+alias java-ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d_\d\d" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
+
+# Aliases for git
+alias gg='git grep'
