@@ -10,15 +10,13 @@ function java-use() {
     java -version
 }
 
-GREEN_COLOR=$'\033[1;32m'
-RED_COLOR=$'\033[1;31m'
-RESET_COLOR=$'\033[m'
+# This function shows success/failure of last executed command
 _last_cmd_ps1(){
     last_command_exit_status=$?
     if [ "$last_command_exit_status" -eq 0 ]
     then
-        echo -en "${GREEN_COLOR}↑ ✔${RESET_COLOR} "
+        echo -en "${FG_GREEN}↑ ✔${FONT_RESET} "
     else
-        echo -en "${RED_COLOR}↑ ✘${RESET_COLOR} "
+        echo -en "${FG_RED}↑ ✘${FONT_RESET} "
     fi
 }

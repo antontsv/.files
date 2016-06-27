@@ -1,20 +1,40 @@
-# History
-export HISTSIZE=20000;
-export HISTFILESIZE="${HISTSIZE}";
+# Keep long history
+export HISTSIZE=5000
+# ...and some more in the file
+export HISTFILESIZE=20000
 # Do not keep duplicates, 
 # and do not save commands that start with a space
 export HISTCONTROL=ignoreboth:erasedups 
 
-export JAVA_HOME=`/usr/libexec/java_home`
-
-# Colors
+# Enable use of colors in command line utils
 export CLICOLOR=1
+# Make grep indicate matching pattern in green
 export GREP_COLOR='01;32'
 export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
 
-export GREEN_COLOR=$'\033[1;32m'
-export RED_COLOR=$'\033[1;31m'
-export RESET_COLOR=$'\033[m'
+# Assign more color environment vars for foreground and backdround text blocks:
+let i=0;
+for color in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE '' DEFAULT; do
+    if [ -n "$color" ]; then
+        printf -v "FG_$color" $'\e[%dm' $((30 + $i));
+        printf -v "BG_$color" $'\e[%dm' $((40 + $i));
+    fi;
+    let i++;
+done;
+let i=0;
+for style in RESET BOLD '' '' UNDERLINE BLINK '' REVERSE HIDDEN; do
+    if [ -n "$style" ]; then
+        printf -v "FONT_$style" $'\e[%dm' $i;
+        [ "$style" != 'RESET' ] && printf -v "FONT_NOT_$style" $'\e[%dm' $(($i + 20));
+    fi;
+    let i++;
+done;
+unset i color style;
+
+# "Not bold" is not \e[21m, but \e[22m. ("2" means "faint" on some terminals.)
+export FONT_NOT_BOLD=$'\e[22m';
+# Reset the font style, but not the color. (Unlike $FONT_RESET.)
+export FONT_NORMAL="${FONT_NOT_BOLD}${FONT_NOT_UNDERLINE}${FONT_NOT_BLINK}${FONT_NOT_REVERSE}${FONT_NOT_HIDDEN}";
 
 export EDITOR=vim
 
@@ -24,6 +44,8 @@ export MANPAGER='less -X';
 # Language
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
+
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
