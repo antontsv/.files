@@ -45,7 +45,9 @@ export MANPAGER='less -X';
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+if [ -x /usr/libexec/java_home ];then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
