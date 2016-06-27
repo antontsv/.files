@@ -20,3 +20,14 @@ _last_cmd_ps1(){
         echo -en "${FG_RED}↑ ✘${FONT_RESET} "
     fi
 }
+
+# Add to path
+prepend-path() {
+  if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "" ];then
+        echo "Usage: prepend-path /some/dir"
+        echo "Prepends specified directory or file path to the PATH variable"
+        return 1;
+  fi;
+  [ -d $1 ] && PATH="$1:$PATH"
+}
+
