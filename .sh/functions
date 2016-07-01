@@ -1,33 +1,55 @@
 
-function java-use() {
-    if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "" ];then
-        echo "Usage: java-use java_version_string"
-        echo "Switch between different JDKs (see companion alias java-ls)"
-        return 1;
+# This function is used to parse -h or --help when
+# invoked on other functions
+_help(){
+ read -r -d '' HELP_MESSAGE
+ if [ $# -gt 0 ] && ([ "$1" = "-h" ] || [ "$1" = "--help" ]);then
+    shift;
+    echo "$HELP_MESSAGE";
+    return 1;
+ fi;
+}
+
+# Display help if -h, --help or no parameters are given
+_help_including_empty(){
+    if [ $# -eq 0 ]; then
+        _help -h || return 1;
+    else
+        _help "$@" || return 1;
     fi;
-    export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-    export PATH=$JAVA_HOME/bin:$PATH
+}
+
+# Add to PATH
+prepend-path() {
+  _help_including_empty "$@" <<< "Usage: prepend-path /some/dir
+    Prepends specified directory or file path to the PATH variable" || return 1;
+  [ -d "$1" ] && PATH="$1:$PATH"
+}
+
+prepend-path-and-export() {
+  _help_including_empty "$@" <<< "Usage: prepend-path-and-export /some/dir
+    Prepends specified directory or file path to the PATH variable and export PATH" || return 1;
+  prepend-path "$1" && export PATH 
+}
+
+java-use() {
+    _help_including_empty "$@" <<< "Usage: java-use java_version
+        Switch between different JDKs (for available versions java-ls)" || return 1;
+    JAVA_HOME=$(/usr/libexec/java_home -v "$1")
+    export JAVA_HOME
+    prepend-path-and-export "$JAVA_HOME/bin"
     java -version
 }
 
 # This function shows success/failure of last executed command
 _last_cmd_ps1(){
     last_command_exit_status=$?
-    if [ "$last_command_exit_status" -eq 0 ]
+    if [ "$last_command_exit_status" -eq 0 ];
     then
-        echo -en "${FG_GREEN}↑ ✔${FONT_RESET} "
+        echo -en "${FG_GREEN}↑ ✔${FONT_RESET} ";
     else
-        echo -en "${FG_RED}↑ ✘${FONT_RESET} "
+        echo -en "${FG_RED}↑ ✘${FONT_RESET} ";
     fi
 }
 
-# Add to path
-prepend-path() {
-  if [ "$1" = "-h" ] || [ "$1" = "--help" ] || [ "$1" = "" ];then
-        echo "Usage: prepend-path /some/dir"
-        echo "Prepends specified directory or file path to the PATH variable"
-        return 1;
-  fi;
-  [ -d $1 ] && PATH="$1:$PATH"
-}
 

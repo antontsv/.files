@@ -1,19 +1,19 @@
 # Open man page as PDF
 manpdf() {
+  _help_including_empty "$@" <<< "Usage: manpdf man_query
+    Prints query to man command in PDF format" || return 1;
   man -t "$1" | open -f -a /Applications/Preview.app/
 }
 
 # Documentation search via Dash.app
 # https://kapeli.com/dash
 dash() {
-  PRINT_DASH_HELP=0  
-  case $# in
-    1) QUERY="$1";;
-    2) QUERY="$1:$2";;
-    *) PRINT_DASH_HELP=1;;
-  esac
-  if [ "$PRINT_DASH_HELP" -ne 0 ] || [ "$QUERY" = "-h" ] || [ "$QUERY" = "--help" ];then
-    echo "Usage: dash [docset] query"; return 1;
+  _help_including_empty "$@" <<< "Usage: dash [docset] query
+    This command searches in Dash.app: API Documentation Browser for Mac OS" || return 1;
+  if [ $# -ge 2 ];then
+    QUERY="$1:${*:2}"
+  else
+    QUERY="$*"
   fi;
   open "dash://$QUERY"
 }
