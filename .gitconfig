@@ -24,6 +24,9 @@
 [rerere]
     enabled = 0
 
+[commit]
+    gpgsign = true
+
 # Allow some extra overrides specific to this install [from separate repo]
  [include]
    path = ~/.gitconfig_extras
