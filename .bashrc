@@ -47,7 +47,12 @@ PS1='${debian_chroot:+($debian_chroot)}'
 
 if [ "$color_prompt" = yes ]; then
     PS1+='$(_last_cmd_ps1)'; # visualise exit status of last command
-    if [[ "${SSH_TTY}" ]]; then
+    if [ -n "${TMUX}" ] ; then
+        PS1+='${FG_CYAN}<t>'; # indicate if running in tmux
+    elif [ -n "$STY" ] || [ "x$TERM" = "xscreen" ]; then
+        PS1+='${FG_CYAN}<s>'; # indicate if running in screen
+    fi;
+    if [ -n "${SSH_TTY}" ]; then
         PS1+='${FG_YELLOW}\h:'; # if connected via ssh print hostname as well
     fi;
     PS1+='${FONT_RESET}${FONT_BOLD}${FG_BLUE}\w'; # print working directory
