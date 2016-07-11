@@ -19,6 +19,11 @@ or if you have already cloned this repo, run this inside the repo:
     git show install.bash^{blob} | bash
 ```
 
+Scripts access the following env variables if you want to override defaults:
+ * `DOT_FILES_REPO` [default is this repository; in case you want to clone other repos]
+ * `DOT_FILES_CASTLE_BRANCH` [branch to checkout from the repo; default is "master"]
+ * `DOT_FILES_CASTLE_NAME` [castle name for homeshick-generated repo; default is "main.files"]
+
 ## .extra references
 
 This repository does not provide complete setup as some of the configurations
