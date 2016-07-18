@@ -1,21 +1,23 @@
 
 OS=$(uname -s)
 
-for configFile in "$HOME"/.sh/{env_vars,aliases,functions,path,completion}; do
-  [ -f "$configFile" ] && . "$configFile"
-done
-
-# If Apple OSX
+configFileExtensions=("")
 if [ "$OS" = "Darwin" ]; then
-  for configFile in "$HOME"/.sh/{env_vars,aliases,functions,completion}.osx; do
-    [ -f "$configFile" ] && . "$configFile"
-  done
-fi
+    configFileExtensions+=(".osx")
+fi;
+configFileExtensions+=(".extra")
 
-# Additional settings/overrides that are specific to this install
+sourced=()
+for configType in {env_vars,aliases,functions,path,completion}; do
+    for ext in "${configFileExtensions[@]}"; do
+        configFile="$HOME/.sh/${configType}$ext"   
+         [ -f "$configFile" ] && sourced+=("$configFile") && source "$configFile"
+    done;
+done;
+
 for configFile in "$HOME"/.sh/*.extra; do
-    [ -f "$configFile" ] && . "$configFile"
-done
+    [ -f "$configFile" ] && ! [[ "${sourced[@]}" == *"$configFile"* ]] && source "$configFile"
+done;
 
 # Make sure any modifications to PATH are propagated
 export PATH
