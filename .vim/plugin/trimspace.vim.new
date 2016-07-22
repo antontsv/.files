@@ -1,0 +1,74 @@
+" Remove trailing white space when I hit Enter (aka <CR>)
+"
+" Git likes to avoid trailing white space, and it sounds like a good
+" idea to me too.  I've noticed most of what I introduce comes from
+" manually breaking a line of code by hitting Enter in the middle.
+" And I often do it right after a comma followed by a space.
+"
+" This function and mapping will remove the trailing space on the
+" soon to be previous line for you.  And it will preserve any other
+" special behavior you have associated with starting a newline, like
+" auto-indentations.
+"
+" To get around this behavior and insert a newline without trimming
+" spaces, use <End><CR>.  Shift+Enter didn't seem to register as
+" different from <CR> for me; I'd prefer <S-CR> if I could make it
+" work.
+"
+" Here are some other strategies I rejected:
+"
+" Remove trailing white space on write:
+"
+"     autocmd BufWritePre * :%s/\s\+$//ce
+"
+" This is too broad sweeping.  What if I really want trailing space?
+" And it doesn't remind me that space is getting stripped when it
+" happens.
+"
+" Highlight trailing white space as you type:
+"
+"     match Todo /\s\+$/
+"
+" This can be annoying, especially when I'm in code with lots of
+" tailing space already.  I want clean diffs above all, and stripping
+" trailing spaces all at once doesn't exactly contribute to that in the
+" short-term.
+"
+" Various other key bindings:
+"
+" Some broke auto indentation.  Others moved up the final cursor
+" position.  Others didn't work both from the end *and* the middle
+" of a line.
+"
+" Maybe you like some of those better.  If so, have at it.
+
+inoremap <CR> <C-O>:call MyRemoveSpace() <CR><CR>
+" For some reason <S-CR> doesn't work as a literal <CR>
+inoremap <End><CR> <CR>
+" This breaks in the first column, fx when making a blank line between
+" function body curly braces.
+function! MyRemoveSpace()
+    let [bufnum, lnum, col, off] = getpos('.')
+    echom col
+"    if col == 1
+"        " Pretend that <Esc> in the macro backed the cursor up into
+"        " the right margin.  There is abmiguity in figuring where the
+"        " cursor was in Insert Mode because on a line of N characters,
+"        " there are N+1 available positions in Insert Mode but only N
+"        " in Normal Mode.  I've found that this is a better guess
+"        " than that we started in the second column in Insert Mode.
+"        let col = 0
+"    endif
+    let line = getline('.')
+    let first_part = strpart(line, 0, col - 1)
+    let second_part = strpart(line, col - 1)
+    let new_first_part = substitute(first_part, '\s*$', "", "")
+    call setline('.', new_first_part . second_part)
+    if strlen(first_part) > strlen(new_first_part)
+        " Multiple echo(m) mess up the mapping after the function call
+        echo "Trimmed trailing white space characters..."
+        sleep 500m
+    endif
+    call setpos('.', [bufnum, lnum, strlen(new_first_part) + 1, off])
+endfunction
+
