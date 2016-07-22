@@ -27,6 +27,10 @@
 [commit]
     gpgsign = true
 
+[alias]
+    save = commit -a -m "Save: WIP commit"
+    str = "!f() { git log -S\"$1\" $2; }; f"
+
 # Allow some extra overrides specific to this install [from separate repo]
  [include]
    path = ~/.gitconfig_extras
