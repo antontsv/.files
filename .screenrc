@@ -1,0 +1,15 @@
+# Screen - configuration file 
+
+# Cache 10000 lines for scroll back
+defscrollback 10000
+
+hardstatus alwayslastline 
+
+# Info in the status [Hostname] [windows][month day and time]
+hardstatus string '%{= g}[ %H %{= g}][ %= %{= w}%-w%{= b}%n*%t%{= w}%+w %= %{= g}][ %m-%d %c %{= g}]'
+
+# No startup screen
+startup_message off
+
+# Enable 256 color
+term screen-256color
