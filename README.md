@@ -10,7 +10,7 @@ Install script is using [homeshick](https://github.com/andsens/homeshick) to sym
 One-liner (no repo clone necessary; all steps are in the shell script)
 
 ```sh
-    curl -L 'https://git.io/vK9TD' | bash
+    curl -L 'https://git.io/install.files' | bash
 ```
 
 or if you have already cloned this repo, run this inside the repo:
