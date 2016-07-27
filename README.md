@@ -30,3 +30,11 @@ This repository does not provide complete setup as some of the configurations
 are sourced from other repositories, thus you can see lots of `*.extra` files
 within this repo. All extra files are supposed to carry your custom settings
 that are not shared publicly.
+
+## Comprehensive setup
+
+For a complete setup checkout this gist:
+
+```sh
+    curl -L 'https://git.io/all.files' | bash
+```
