@@ -1,4 +1,4 @@
-# .files [AntonTsv's dotfiles]
+# .files [@antontsv's dotfiles]
 
 A collection of configuration files for `$HOME`.
 These files can be copied into your `~` directory, or you can use install script below.
