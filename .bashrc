@@ -61,7 +61,7 @@ if [ "$color_prompt" = yes ]; then
     if [ "x$(type -t __git_ps1)" = "xfunction" ]; then
         PS1+='${FG_RED}$(__git_ps1 "|%s")' # more info from git (if available)
     fi;
-    PS1+='${FONT_RESET}\n\$ ' # reset colors and more to a new line
+    PS1+='${FONT_RESET}\n\$ ' # reset colors and move to a new line
 else
     PS1+='\u@\h:\w\$ ' # basic info if no colors supported: user, host, working directory
 fi
