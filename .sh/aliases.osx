@@ -27,3 +27,6 @@ alias killfinder="killall Finder"
 alias killdock="killall Dock"
 alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killosx="killfinder && killdock && killmenubar"
+
+#open chrome
+alias chrome="open -a Google\ Chrome"
