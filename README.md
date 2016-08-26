@@ -13,12 +13,6 @@ One-liner (no repo clone necessary; all steps are in the shell script)
     curl -L 'https://git.io/install.files' | bash
 ```
 
-or if you have already cloned this repo, run this inside the repo:
-
-```sh
-    git show install.bash^{blob} | bash
-```
-
 Scripts access the following env variables if you want to override defaults:
  * `DOT_FILES_REPO` [default is this repository; in case you want to clone other repos]
  * `DOT_FILES_CASTLE_BRANCH` [branch to checkout from the repo; default is "master"]
