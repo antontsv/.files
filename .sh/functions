@@ -52,4 +52,8 @@ _last_cmd_ps1(){
     fi
 }
 
-
+newdir(){
+  _help_including_empty "$@" <<< "Usage: new dir some/new/dir
+    Creates new directory and cd into it" || return 1;
+    mkdir -p "$1" && cd $_
+}
