@@ -4,6 +4,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias -- -='cd -'                  # Go to previous dir with -
+alias la='ls -lah'
 
 # List declared aliases, functions
 
