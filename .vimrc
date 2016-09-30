@@ -90,6 +90,10 @@ endif
 set backup
 set backupdir=$VIM_MAIN_BACKUP_DIR
 
+" If file is opened in read-only mode we can will write them as root
+" :W
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 
 " local customizations
 let $LOCALFILE=expand("~/.vimrc_extras")
