@@ -2,9 +2,8 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
-" Enable loading filetype and indentation plugins
+" Enable loading filetype
 filetype plugin on
-"filetype indent off
 
 " Turn syntax highlighting on
 syntax on
