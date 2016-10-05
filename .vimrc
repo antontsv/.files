@@ -75,21 +75,6 @@ set laststatus=2
 " set viminfo+=%
 set viminfo='20,<50,s10
 
-" When file args were passed, vim skips reading the buffer list, resulting
-" in it being lost on exit.  So reread it with the arglist temporarily empty.
-" Breaks on odd characters in files and occasionally otherwise.
-let old_args = copy(argv())
-if argc() > 0
-  argdelete *
-endif
-" viminfo
-for arg in old_args
-  exe "argadd " . fnameescape(arg) . ""
-endfor
-if argc() > 0
-  au VimEnter * argu 1 | filetype detect
-endif
-
 " Enable backups
 " Note $VIM_MAIN_BACKUP_DIR is used in backup plugin,
 " that build file path hierarhy and takes incremental
