@@ -1,6 +1,6 @@
 
 [core]
-    editor = vi
+    editor = vim
     excludesfile = ~/.gitignore
 
 [color]
