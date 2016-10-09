@@ -7,7 +7,5 @@ elseif getline(1) =~ '^#!/usr/bin/env awesome-bash'
   setfiletype sh
 elseif getline(2) =~ '^Index: '
   setfiletype diff
-elseif getline(1) =~ '^<?'
-  setfiletype php
 endif
 
