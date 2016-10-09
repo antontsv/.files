@@ -70,9 +70,9 @@ set history=1000
 " Show status bar for all windows
 set laststatus=2
 
-" Determine what's saved in .viminfo, < is new name for ", wviminfo to write
-" set viminfo='50,<1000,!,f1,s100
-" set viminfo+=%
+" Determine what's saved in .viminfo
+" remember marks for the last 20 files,
+" save max 50 lines for each registry up to 10Kb
 set viminfo='20,<50,s10
 
 " Enable backups
