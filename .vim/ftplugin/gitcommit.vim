@@ -7,5 +7,9 @@ augroup gitcommit
   au!
   au BufLeave * execute "2match none | augroup gitcommit | au!" | execute "augroup END"
 augroup END
+
 " Do a spell check
 set spell
+
+" Use two spaces for a tab
+set tabstop=2
