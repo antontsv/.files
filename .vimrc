@@ -1,3 +1,6 @@
+" just pure vim, no vi compatible mode
+set nocompatible
+
 " init pathogen (for plugins in ~/.vim/bundle)
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
