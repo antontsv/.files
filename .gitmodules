@@ -4,3 +4,6 @@
 [submodule ".vim/bundle/mru.vim"]
 	path = .vim/bundle/mru.vim
 	url = https://github.com/vim-scripts/mru.vim
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git

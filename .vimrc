@@ -1,6 +1,7 @@
 " init pathogen (for plugins in ~/.vim/bundle)
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
+call pathogen#helptags()
 
 " Enable loading filetype
 filetype plugin on
@@ -97,6 +98,11 @@ vnoremap <Tab> <Esc>gV
 onoremap <Tab> <Esc>
 inoremap <Tab> <Esc>`^
 inoremap <Leader><Tab> <Tab>
+
+" Settings for CTRL-P plugin
+" open a ctrl-p search by pressing space
+nnoremap <Space> :CtrlP<CR>
+let g:ctrlp_show_hidden = 1
 
 " local customizations
 let $LOCALFILE=expand("~/.vimrc_extras")
