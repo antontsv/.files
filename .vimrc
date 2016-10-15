@@ -74,6 +74,9 @@ set history=1000
 " Show status bar for all windows
 set laststatus=2
 
+" Do not add two spaces from joining w/ J
+set nojoinspaces
+
 " Determine what's saved in .viminfo
 " remember marks for the last 20 files,
 " save max 50 lines for each registry up to 10Kb
