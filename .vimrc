@@ -77,6 +77,11 @@ set laststatus=2
 " Do not add two spaces from joining w/ J
 set nojoinspaces
 
+" case-insensitive search
+set ignorecase
+" switch to case-sensitive in mixed case is used in the search term
+set smartcase
+
 " Determine what's saved in .viminfo
 " remember marks for the last 20 files,
 " save max 50 lines for each registry up to 10Kb
