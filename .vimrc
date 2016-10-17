@@ -115,6 +115,13 @@ inoremap <Leader><Tab> <Tab>
 nnoremap <Space> :CtrlPMixed<CR>
 let g:ctrlp_show_hidden = 1
 
+" Airline settings for a status line customizations
+set t_Co=256
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
+
 " local customizations
 let $LOCALFILE=expand("~/.vimrc_extras")
 if filereadable($LOCALFILE)
