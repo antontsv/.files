@@ -74,6 +74,9 @@ set history=1000
 " Show status bar for all windows
 set laststatus=2
 
+" Do not show mode, because airline will have it in the status line
+set noshowmode
+
 " Do not add two spaces from joining w/ J
 set nojoinspaces
 
