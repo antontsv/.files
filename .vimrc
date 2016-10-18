@@ -17,7 +17,7 @@ syntax on
 set wildmode=longest:list
 
 " show line and column number of the cursor position in status line
-set ruler 
+set ruler
 
 " Incremental search (show matches as you type search string)
 set incsearch
@@ -120,8 +120,7 @@ let g:ctrlp_show_hidden = 1
 
 " Airline settings for a status line customizations
 set t_Co=256
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_powerline_fonts=1
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
