@@ -85,6 +85,11 @@ set ignorecase
 " switch to case-sensitive in mixed case is used in the search term
 set smartcase
 
+" copy indent from previous line for O and o
+set autoindent
+" smart indent around {} and certain keywords
+set smartindent
+
 " Determine what's saved in .viminfo
 " remember marks for the last 20 files,
 " save max 50 lines for each registry up to 10Kb
