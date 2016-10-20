@@ -9,12 +9,12 @@ set-option -g status-fg colour136 #faint yellow
 set-option -g status-attr default
 
 # window title colors
-set-window-option -g window-status-fg colour236 #faint gray
+set-window-option -g window-status-fg colour242 #faint gray
 set-window-option -g window-status-bg default
 set-window-option -g window-status-attr dim
 
 # active window title colors
-set-window-option -g window-status-current-fg colour247 #bright gray
+set-window-option -g window-status-current-fg colour249 #bright gray
 set-window-option -g window-status-current-bg default
 set-window-option -g window-status-current-attr bright
 
