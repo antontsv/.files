@@ -25,7 +25,7 @@ are sourced from other repositories, thus you can see lots of `*.extra` files
 within this repo. All extra files are supposed to carry your custom settings
 that are not shared publicly.
 
-## Screenshots:
+## Screenshots
 * Bash command line / Tmux session
 ![command-line](https://cloud.githubusercontent.com/assets/2007057/19623671/c0aa27a6-9887-11e6-95c5-a23766c75b71.png)
 
@@ -42,6 +42,6 @@ For a complete setup checkout this gist:
 This command will install:
  * this dotfile repo
  * install homeshick to manage .files [with refresh every two days]
- * [awesome-bash](https://github.com/antontsv/awesome-shell) and various (CLI scripts)[https://github.com/antontsv/home.bin] in ~/bin
+ * [awesome-bash](https://github.com/antontsv/awesome-shell) and various  [CLI scripts](https://github.com/antontsv/home.bin) in ~/bin
  * install Mac-specific [dotfiles](https://github.com/antontsv/apple.bin), scripts and [settings](https://github.com/antontsv/apple.bin/blob/master/.misc/apple_osx_settings) if run on Mac OS
 
