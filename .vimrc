@@ -59,8 +59,8 @@ set textwidth=80
 set foldlevel=1000
 set foldcolumn=0
 
-" do not show commands (or size of selection in Visual mode) in the status
-set noshowcmd
+" show commands in the status
+set showcmd
 
 " When a bracket is inserted, briefly jump to a matching one
 set showmatch
