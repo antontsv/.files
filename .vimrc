@@ -120,7 +120,7 @@ inoremap <Leader><Tab> <Tab>
 
 " Settings for CTRL-P plugin
 " open a ctrl-p search by pressing space
-nnoremap <Space> :CtrlPMixed<CR>
+nnoremap [<Space> :CtrlPMixed<CR>
 let g:ctrlp_show_hidden = 1
 
 " Show NerdTree
