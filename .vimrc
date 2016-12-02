@@ -132,6 +132,12 @@ let g:airline_powerline_fonts=1
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 
+" Learn homerow!
+noremap <Up> :echom "Use k"<CR>
+noremap <Down> :echom "Use j"<CR>
+noremap <Left> :echom "Use h"<CR>
+noremap <Right> :echom "Use l"<CR>
+
 " local customizations
 let $LOCALFILE=expand("~/.vimrc_extras")
 if filereadable($LOCALFILE)
