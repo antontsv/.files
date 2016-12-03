@@ -111,13 +111,6 @@ set backupdir=$VIM_MAIN_BACKUP_DIR
 " :W
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
-" Use TAB as an ESC
-nnoremap <Tab> <Esc>
-vnoremap <Tab> <Esc>gV
-onoremap <Tab> <Esc>
-inoremap <Tab> <Esc>`^
-inoremap <Leader><Tab> <Tab>
-
 " Settings for CTRL-P plugin
 " open a ctrl-p search by pressing space
 nnoremap [<Space> :CtrlPMixed<CR>
