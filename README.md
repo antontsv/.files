@@ -43,5 +43,5 @@ This command will install:
  * this dotfile repo
  * install homeshick to manage .files [with refresh every two days]
  * [awesome-bash](https://github.com/antontsv/awesome-shell) and various  [CLI scripts](https://github.com/antontsv/home.bin) in ~/bin
- * install Mac-specific [dotfiles](https://github.com/antontsv/apple.bin), scripts and [settings](https://github.com/antontsv/apple.bin/blob/master/.misc/apple_osx_settings) if run on Mac OS
+ * install Mac-specific [dotfiles](https://github.com/antontsv/apple.bin), scripts and [settings](https://github.com/antontsv/apple.bin/blob/master/.misc/macos_settings) if run on Mac OS
 
