@@ -46,7 +46,7 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
 if [ -x /usr/libexec/java_home ];then
-    export JAVA_HOME=$(/usr/libexec/java_home)
+    export JAVA_HOME=$(/usr/libexec/java_home -F 2>/dev/null || echo "")
 fi
 
 # check the window size after each command and, if necessary,
