@@ -10,7 +10,7 @@ configFileExtensions+=(".extra")
 sourced=()
 for configType in {env_vars,aliases,functions,path,completion}; do
     for ext in "${configFileExtensions[@]}"; do
-        configFile="$HOME/.sh/${configType}$ext"   
+        configFile="$HOME/.sh/${configType}$ext"
          [ -f "$configFile" ] && sourced+=("$configFile") && source "$configFile"
     done;
 done;
