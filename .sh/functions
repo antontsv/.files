@@ -29,7 +29,7 @@ prepend-path() {
 prepend-path-and-export() {
   _help_including_empty "$@" <<< "Usage: prepend-path-and-export /some/dir
     Prepends specified directory or file path to the PATH variable and export PATH" || return 1;
-  prepend-path "$1" && export PATH 
+  prepend-path "$1" && export PATH
 }
 
 java-use() {
