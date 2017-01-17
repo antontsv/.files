@@ -57,3 +57,27 @@ newdir(){
     Creates new directory and cd into it" || return 1;
     mkdir -p "$1" && cd $_
 }
+
+init-ssh-agent(){
+    _help "$@" <<< "Inits SSH agent if not already running for current user" 
+    local launch_ssh_agent=1
+    local ssh_agent_pid_file="$TMPDIR/ssh-agent-for-$(whoami).pid"
+    local ssh_agent_socket="$TMPDIR/ssh-agent-socket-for-$(whoami)"
+    if [ -f "$ssh_agent_pid_file" ];then
+     ssh_agent_pid=$(cat "$ssh_agent_pid_file")
+     kill -0 "$ssh_agent_pid"
+     if [ $? -eq 0 ];then
+        SSH_AGENT_PID="$ssh_agent_pid";
+        export SSH_AGENT_PID;
+        SSH_AUTH_SOCK="$ssh_agent_socket";
+        export SSH_AUTH_SOCK;
+        launch_ssh_agent=0;
+     fi;
+    fi;
+
+    if [ "$launch_ssh_agent" -eq 1 ];then
+        eval $(ssh-agent -t 3600 -a "$ssh_agent_socket") > /dev/null
+        [ -n "$SSH_AGENT_PID" ] && echo "$SSH_AGENT_PID" > "$ssh_agent_pid_file"
+    fi;
+
+}
