@@ -2,14 +2,14 @@
 export HISTSIZE=5000
 # ...and some more in the file
 export HISTFILESIZE=20000
-# Do not keep duplicates, 
+# Do not keep duplicates,
 # and do not save commands that start with a space
-export HISTCONTROL=ignoreboth:erasedups 
+export HISTCONTROL=ignoreboth:erasedups
 
 # Enable use of colors in command line utils
 export CLICOLOR=1
 # Make grep indicate matching pattern in green
-export GREP_COLOR='01;32'
+export GREP_COLOR='01;37'
 export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
 
 # Assign more color environment vars for foreground and backdround text blocks:
