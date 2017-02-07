@@ -59,7 +59,7 @@ newdir(){
 }
 
 init-ssh-agent(){
-    _help "$@" <<< "Inits SSH agent if not already running for current user" 
+    _help "$@" <<< "Inits SSH agent if not already running for current user"
     local launch_ssh_agent=1
     local ssh_agent_pid_file="$TMPDIR/ssh-agent-for-$(whoami).pid"
     local ssh_agent_socket="$TMPDIR/ssh-agent-socket-for-$(whoami)"
@@ -80,4 +80,9 @@ init-ssh-agent(){
         [ -n "$SSH_AGENT_PID" ] && echo "$SSH_AGENT_PID" > "$ssh_agent_pid_file"
     fi;
 
+}
+purge-ssh-agent-keys(){
+    _help "$@" <<< "Gets rid of SSH agent keys"
+    init-ssh-agent
+    ssh-add -D
 }
