@@ -3,7 +3,7 @@ OS=$(uname -s)
 
 configFileExtensions=("")
 if [ "$OS" = "Darwin" ]; then
-    configFileExtensions+=(".osx")
+    configFileExtensions+=(".macos")
 fi;
 configFileExtensions+=(".extra")
 
