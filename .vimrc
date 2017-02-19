@@ -131,6 +131,9 @@ noremap <Down> :echom "Use j"<CR>
 noremap <Left> :echom "Use h"<CR>
 noremap <Right> :echom "Use l"<CR>
 
+" Go lang
+let g:go_fmt_command = 'goimports'
+
 " local customizations
 let $LOCALFILE=expand("~/.vimrc_extras")
 if filereadable($LOCALFILE)
