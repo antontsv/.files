@@ -133,6 +133,9 @@ noremap <Right> :echom "Use l"<CR>
 
 " Go lang
 let g:go_fmt_command = 'goimports'
+if isdirectory($GOPATH . '/src/github.com/golang/lint/misc/vim')
+    set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+endif
 
 " local customizations
 let $LOCALFILE=expand("~/.vimrc_extras")
