@@ -35,7 +35,7 @@ Note: It is recommended to do a backup first.
 For a complete setup checkout this gist:
 
 ```sh
-    curl -L 'https://git.io/all.files' | bash
+    curl -s -L 'https://git.io/all.files' | bash
 ```
 
 This command will install:
