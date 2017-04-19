@@ -1,4 +1,3 @@
-# .files
 
 A collection of configuration files for `$HOME`.
 These files can be copied into your `~` directory, or you can use install script below.
@@ -10,7 +9,7 @@ Install script is using [homeshick](https://github.com/andsens/homeshick) to sym
 One-liner (no repo clone necessary; all steps are in the shell script)
 
 ```sh
-    curl -L 'https://git.io/install.files' | bash
+    curl -s -L 'https://git.io/install.files' | bash
 ```
 
 Scripts access the following env variables if you want to override defaults:
