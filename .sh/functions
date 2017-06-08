@@ -65,7 +65,7 @@ init-ssh-agent(){
     local ssh_agent_socket="$TMPDIR/ssh-agent-socket-for-$(whoami)"
     if [ -f "$ssh_agent_pid_file" ];then
      ssh_agent_pid=$(cat "$ssh_agent_pid_file")
-     kill -0 "$ssh_agent_pid"
+     kill -0 "$ssh_agent_pid" 2>/dev/null
      if [ $? -eq 0 ];then
         SSH_AGENT_PID="$ssh_agent_pid";
         export SSH_AGENT_PID;
@@ -76,6 +76,7 @@ init-ssh-agent(){
     fi;
 
     if [ "$launch_ssh_agent" -eq 1 ];then
+        rm -f "$ssh_agent_pid_file" "$ssh_agent_socket" 2>/dev/null
         eval $(ssh-agent -t 3600 -a "$ssh_agent_socket") > /dev/null
         [ -n "$SSH_AGENT_PID" ] && echo "$SSH_AGENT_PID" > "$ssh_agent_pid_file"
     fi;
