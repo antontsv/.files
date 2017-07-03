@@ -10,7 +10,6 @@ export HISTCONTROL=ignoreboth:erasedups
 export CLICOLOR=1
 # Make grep indicate matching pattern in green
 export GREP_COLOR='01;37'
-export GREP_OPTIONS="$GREP_OPTIONS --color=auto"
 
 # Assign more color environment vars for foreground and backdround text blocks:
 let i=0;

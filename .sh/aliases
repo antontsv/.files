@@ -6,6 +6,11 @@ alias ....='cd ../../..'
 alias -- -='cd -'                  # Go to previous dir with -
 alias la='ls -lah'
 
+# Always use color; cannot use GREP_OPTIONS for this anymore
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 # List declared aliases, functions
 
 alias list_aliases="alias | sed 's/=.*//'"
