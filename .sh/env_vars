@@ -11,6 +11,9 @@ export CLICOLOR=1
 # Make grep indicate matching pattern in green
 export GREP_COLOR='01;37'
 
+# My custom vim/tmux var do switch between dark/light solarized mode
+export TERM_COLOR_VARIANT=dark
+
 # Assign more color environment vars for foreground and backdround text blocks:
 let i=0;
 for color in BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE '' DEFAULT; do

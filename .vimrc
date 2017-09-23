@@ -109,7 +109,7 @@ set backupdir=$VIM_MAIN_BACKUP_DIR
 
 " If file is opened in read-only mode we can will write them as root
 " :W
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Settings for CTRL-P plugin
 " open a ctrl-p search by pressing space
@@ -123,7 +123,28 @@ nnoremap <Leader>f :NERDTreeToggle<CR>
 set t_Co=256
 let g:airline_powerline_fonts=1
 let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
+
+" Get current color variant from management script
+function! ColorMode(mode)
+    if a:mode == "light"
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
+
+function! ApplyColorMode()
+    let color_variant=system("$HOME/bin/color-mode-for-term")
+    if v:shell_error
+        " if no management script, fall back to env variable
+        let color_variant=$TERM_COLOR_VARIANT
+    endif
+    call ColorMode(color_variant)
+endfunction
+
+call ApplyColorMode()
+let g:solarized_contrast='high'
+colorscheme solarized
 
 " Learn homerow!
 noremap <Up> :echom "Use k"<CR>

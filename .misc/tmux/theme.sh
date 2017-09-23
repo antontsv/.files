@@ -47,3 +47,7 @@ tm_date="%R %d %b"
 
 set -g status-left $tm_session_name' '$tm_window_zoom_indicator
 set -g status-right $tm_date' #h'
+
+
+if-shell '[ -x "$HOME/bin/color-mode-for-term" ] && [ "$($HOME/bin/color-mode-for-term)" = "light" ]' \
+    'source-file $HOME/.misc/tmux/theme-light.conf'
