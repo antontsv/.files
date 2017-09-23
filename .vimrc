@@ -133,16 +133,26 @@ function! ColorMode(mode)
     endif
 endfunction
 
-function! ApplyColorMode()
-    let color_variant=system("$HOME/bin/color-mode-for-term")
-    if v:shell_error
-        " if no management script, fall back to env variable
-        let color_variant=$TERM_COLOR_VARIANT
+function! ApplyColorMode(...)
+    if a:0 > 0
+        let color_variant=a:1
+    else
+        let color_variant=system("$HOME/bin/color-mode-for-term")
+        if v:shell_error
+            " if no management script, fall back to env variable
+            let color_variant=$TERM_COLOR_VARIANT
+        endif
     endif
     call ColorMode(color_variant)
 endfunction
 
+function! ColorModeToggle()
+    call ApplyColorMode(&background == 'dark' ? 'light' : 'dark')
+endfunction
+
 call ApplyColorMode()
+
+nnoremap <Leader>c :call ColorModeToggle()<CR>
 let g:solarized_contrast='high'
 colorscheme solarized
 
