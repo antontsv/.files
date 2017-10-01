@@ -38,6 +38,11 @@ For a complete setup checkout this gist:
     curl -s -L 'https://git.io/all.files' | bash
 ```
 
+Gist that does all.files setup including your local/private repo:
+```sh
+    curl -s -L 'https://git.io/private.files' | bash
+```
+
 This command will install:
  * this dotfile repo
  * install homeshick to manage .files [with refresh every two days]
