@@ -43,6 +43,8 @@ Gist that does all.files setup including your local/private repo:
     curl -s -L 'https://git.io/private.files' | bash
 ```
 
+Skeptical about curl? Check out [this small utility](https://github.com/antontsv/url-shell#example) with built-in PGP verification
+
 This command will install:
  * this dotfile repo
  * install homeshick to manage .files [with refresh every two days]
