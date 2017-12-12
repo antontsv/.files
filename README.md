@@ -17,6 +17,8 @@ Scripts access the following env variables if you want to override defaults:
  * `DOT_FILES_CASTLE_BRANCH` [branch to checkout from the repo; default is "master"]
  * `DOT_FILES_CASTLE_NAME` [castle name for homeshick-generated repo; default is "main.files"]
 
+ There are many other approaches to manage config files. If you want to know why I use homeshick, [go here](https://github.com/antontsv/engineering/blob/master/dotfiles.md).
+
 ## .extra references
 
 This repository does not provide complete setup as some of the configurations
