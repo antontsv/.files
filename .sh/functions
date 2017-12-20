@@ -82,8 +82,21 @@ init-ssh-agent(){
     fi;
 
 }
+
 purge-ssh-agent-keys(){
     _help "$@" <<< "Gets rid of SSH agent keys"
     init-ssh-agent
     ssh-add -D
+}
+
+gosrc(){
+    _help "$@" <<< "cd to GOPATH source dirs"
+    dest="$GOPATH/src"
+    case "$@" in
+        mygit|git*|hub)
+            [ -n "$MY_GITHUB" ] && [ -d "$dest/github.com/$MY_GITHUB" ] && \
+                dest="$dest/github.com/$MY_GITHUB";
+        ;;
+    esac
+    cd "$dest"
 }

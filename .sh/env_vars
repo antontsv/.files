@@ -63,3 +63,6 @@ shopt -s cdspell
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
+
+# Github
+export MY_GITHUB="antontsv"
