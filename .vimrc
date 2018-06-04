@@ -165,7 +165,7 @@ noremap <Right> :echom "Use l"<CR>
 " automatically leave insert mode after 'updatetime' milliseconds of inaction
 au CursorHoldI * stopinsert
 " set 'updatetime' just for insert mode / default is 4000 ms
-au InsertEnter * let updaterestore=&updatetime | set updatetime=9000
+au InsertEnter * let updaterestore=&updatetime | set updatetime=5000
 au InsertLeave * let &updatetime=updaterestore
 
 " Go lang
