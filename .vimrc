@@ -162,6 +162,12 @@ noremap <Down> :echom "Use j"<CR>
 noremap <Left> :echom "Use h"<CR>
 noremap <Right> :echom "Use l"<CR>
 
+" automatically leave insert mode after 'updatetime' milliseconds of inaction
+au CursorHoldI * stopinsert
+" set 'updatetime' just for insert mode / default is 4000 ms
+au InsertEnter * let updaterestore=&updatetime | set updatetime=9000
+au InsertLeave * let &updatetime=updaterestore
+
 " Go lang
 let g:go_fmt_command = 'goimports'
 if isdirectory($GOPATH . '/src/github.com/golang/lint/misc/vim')
