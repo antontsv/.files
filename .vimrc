@@ -119,6 +119,10 @@ let g:ctrlp_show_hidden = 1
 " Show NerdTree
 nnoremap <Leader>f :NERDTreeToggle<CR>
 
+" display line numbers and be relative to current line
+set number
+set relativenumber
+
 " Airline settings for a status line customizations
 set t_Co=256
 let g:airline_powerline_fonts=1
