@@ -52,6 +52,10 @@ set formatoptions-=a
 " The t option causes text to autowrap when you reach at textwidth
 set formatoptions-=t
 
+" Do not use special octal processing for CTRL-A/CTRL-X for numbers that begin
+" with zero, treat them as normal decimals
+set nrformats-=octal
+
 " Set maximum text width (for wrapping)
 set textwidth=80
 
