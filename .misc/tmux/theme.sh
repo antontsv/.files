@@ -14,7 +14,7 @@ set-window-option -g  window-status-current-format "#[bold]#I #W"
 
 #inlicate pane number that is zoomed
 tm_window_zoom_indicator="#{?window_zoomed_flag,🔎 #P,}"
-tm_session_name_prefix_icon="⚓"
+tm_session_name_prefix_icon="☞"
 tm_session_name="$tm_session_name_prefix_icon #[fg=colour243]#S"
 tm_date="%R %d %b"
 
