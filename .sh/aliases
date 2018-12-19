@@ -26,3 +26,4 @@ alias java-ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d" | cut -d , -f
 
 # Aliases for git
 alias gg='git grep'
+alias gs='git status'
