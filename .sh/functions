@@ -100,3 +100,9 @@ gosrc(){
     esac
     cd "$dest"
 }
+
+cl(){
+  _help_including_empty "$@" <<< "Usage: cl some/dir
+    Change to a directory and lists it" || return 1;
+    cd "$1" && ls -la
+}
