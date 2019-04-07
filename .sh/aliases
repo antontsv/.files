@@ -5,6 +5,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias -- -='cd -'                  # Go to previous dir with -
 alias la='ls -lah'
+alias ll='la'
 
 # Always use color; cannot use GREP_OPTIONS for this anymore
 alias grep='grep --color=auto'
