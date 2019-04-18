@@ -106,3 +106,14 @@ cl(){
     Change to a directory and lists it" || return 1;
     cd "$1" && ls -la
 }
+
+dotfiles-clone(){
+  _help_including_empty "$@" <<< "Usage: dotfiles-clone git-clone-url
+    Change to a directory and lists it" || return 1;
+    HOMESHICK_IGNORE="LICENSE,README.md,/.gitmodules" \
+    HOMESHICK_USE_CASTLE_ROOT=true \
+    HOMESHICK_CLONE_BRANCH="${DOT_FILES_BRANCH:-master}" \
+    homeshick clone --batch "$@"
+}
+
+
