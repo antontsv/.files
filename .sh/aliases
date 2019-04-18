@@ -25,6 +25,9 @@ done
 
 alias java-ls='/usr/libexec/java_home -V 2>&1 | grep -E "\d.\d.\d" | cut -d , -f 1 | colrm 1 4 | grep -v Home'
 
+# Source profile
+alias sprofile="source $HOME/.profile"
+
 # Aliases for git
 alias gg='git grep'
 alias gs='git status'
