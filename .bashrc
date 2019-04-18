@@ -3,19 +3,20 @@ OS=$(uname -s)
 
 configFileExtensions=("")
 if [ "$OS" = "Darwin" ]; then
-    configFileExtensions+=(".macos")
+    configFileExtensions+=("*.macos")
 fi;
-configFileExtensions+=(".extra")
+configFileExtensions+=("*.extra")
 
 sourced=()
 for configType in {env_vars,aliases,functions,path,completion}; do
     for ext in "${configFileExtensions[@]}"; do
-        configFile="$HOME/.sh/${configType}$ext"
-         [ -f "$configFile" ] && sourced+=("$configFile") && source "$configFile"
+        for configFile in $(find "$HOME/.sh" -name "${configType}$ext"); do
+           [ -f "$configFile" ] && sourced+=("$configFile") && source "$configFile"
+        done
     done;
 done;
 
-for configFile in "$HOME"/.sh/*.extra; do
+for configFile in $(find "$HOME/.sh" -name "*.extra"); do
     [ -f "$configFile" ] && ! [[ "${sourced[@]}" == *"$configFile"* ]] && source "$configFile"
 done;
 
