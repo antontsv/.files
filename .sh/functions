@@ -116,4 +116,31 @@ dotfiles-clone(){
     homeshick clone --batch "$@"
 }
 
+whichdir(){
+  _help_including_empty "$@" <<< "Usage: whichdir [-asc] utility
+    Same as which, but shows you directories, containing utility
+    Options:
+    -a show all locations
+    -s silent, return success if utility is found
+    -c cd into first directory found 
+    " || return 1;
+    args=""
+    while test ${#} -gt 0; do
+       if [[ "$1" == -* ]];then
+           args="$args $1"
+       else
+           break;
+       fi;
+       shift
+    done
+    [[ "$args" == *s* ]] && return $(command -v "$*" > /dev/null)
+    if [[ "$args" == *c* ]];then
+        path=$(command -v "$*") || return 1
+        cd $(dirname "$path") || return 1
+    else
+        paths=$(which $args "$*") || return 1
+        echo $paths | xargs -n1 dirname
+    fi;
+}
+
 
