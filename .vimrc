@@ -164,7 +164,7 @@ function! ColorModeToggle()
 endfunction
 
 nnoremap <Leader>c :call ColorModeToggle()<CR>
-let g:solarized_contrast='high'
+let g:solarized_contrast='normal'
 colorscheme solarized
 
 call ApplyColorMode()
