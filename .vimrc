@@ -134,7 +134,12 @@ let g:airline_theme='solarized'
 
 " Get current color variant from management script
 function! ColorMode(mode)
-    if a:mode == "light"
+    if ($TERM_PROGRAM ==? 'vscode' && a:mode == 'dark')
+        let g:solarized_termtrans = 1
+    else
+        let g:solarized_termtrans = 0
+    endif
+    if a:mode == 'light'
         set background=light
     else
         set background=dark
@@ -158,11 +163,11 @@ function! ColorModeToggle()
     call ApplyColorMode(&background == 'dark' ? 'light' : 'dark')
 endfunction
 
-call ApplyColorMode()
-
 nnoremap <Leader>c :call ColorModeToggle()<CR>
 let g:solarized_contrast='high'
 colorscheme solarized
+
+call ApplyColorMode()
 
 " Learn homerow!
 noremap <Up> :echom "Use k"<CR>
