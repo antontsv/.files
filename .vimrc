@@ -134,11 +134,6 @@ let g:airline_theme='solarized'
 
 " Get current color variant from management script
 function! ColorMode(mode)
-    if ($TERM_PROGRAM ==? 'vscode' && a:mode == 'dark')
-        let g:solarized_termtrans = 1
-    else
-        let g:solarized_termtrans = 0
-    endif
     if a:mode == 'light'
         set background=light
     else
