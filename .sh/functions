@@ -190,7 +190,7 @@ install-awesome-bash(){
   _help "$@" <<< "Usage: install-awesome-bash
     Installs https://github.com/antontsv/awesome-shell" || return 1;
 
-    if [ -d "$HOME/bin/awesome-shell" ] || git clone "https://github.com/antontsv/awesome-shell.git";then
+    if [ -d "$HOME/bin/awesome-shell" ] || git clone "https://github.com/antontsv/awesome-shell.git" "$HOME/bin/awesome-shell";then
         echo "Awesome-shell source is checked out at $HOME/bin/awesome-shell"
     fi;
 
