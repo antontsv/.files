@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# vim: ft=sh:
 
 # This function is used to parse -h or --help when
 # invoked on other functions
@@ -140,6 +142,65 @@ whichdir(){
     else
         paths=$(which $args "$*") || return 1
         echo $paths | xargs -n1 dirname
+    fi;
+}
+
+get-antontsv-sigcheck-tool(){
+    _help "$@" <<< "Usage: get-antontsv-sigcheck-tool
+    Downloads utility for PGP signature verifications on commits" || return 1;
+    OS=$(uname -s)
+    hashsum="expected hash sum will be here"
+    shasum_cmd="echo 'command for sha 256 will be set here'"
+    sig_check="$HOME/bin/verify-commit"
+
+    if [ -x "$sig_check" ];then
+        # tool was previosly downloaded and verified
+        echo "$sig_check"
+        return
+    fi;
+
+    if [ "$OS" = "Darwin" ]; then
+        #  Mac OS
+        shasum_cmd="/usr/bin/shasum -a 256"
+        curl -Ls -o "$sig_check" "https://antontsv.keybase.pub/macos-verify-commit?dl=1"
+        hashsum="93407ec562db389413a01f24dc71d391259545b9ef561c37933702f7121f1eb9"
+    else
+        shasum_cmd="/usr/bin/sha256sum"
+        curl -Ls -o "$sig_check" "https://antontsv.keybase.pub/verify-commit?dl=1"
+        hashsum="34d39967b2fbc4c8a81d28236556dff5f8f23d8e3d25431eb7d8de0a6da6c494"
+    fi;
+
+    if [ "$($shasum_cmd "$sig_check" | cut -d ' ' -f1 )" != "$hashsum" ];then
+        rm -rf "$sig_check"
+        echo "Downloaded tool for PGP verification does not have expected sha256."
+        return 1
+    fi;
+
+    chmod u+x "$sig_check"
+    echo "$sig_check"
+}
+
+is-commited-by-antontsv(){
+  _help_including_empty "$@" <<< "Usage: is-commited-by-antontsv path_to_git_checkout
+    Verifies that commit was indeed created by github's @antontsv by verifying commit signature" || return 1;
+    tool="$(get-antontsv-sigcheck-tool)" && [ -d "$1" ]  && "$tool" sigcheck -p "$1"
+}
+
+install-awesome-bash(){
+  _help "$@" <<< "Usage: install-awesome-bash
+    Installs https://github.com/antontsv/awesome-shell" || return 1;
+
+    if [ -d "$HOME/bin/awesome-shell" ] || git clone "https://github.com/antontsv/awesome-shell.git";then
+        echo "Awesome-shell source is checked out at $HOME/bin/awesome-shell"
+    fi;
+
+    if ! (is-commited-by-antontsv "$HOME/bin/awesome-shell" && "$HOME/bin/awesome-shell/INSTALL");then
+        echo "Unable to install awesome-bash at this time"
+        return 1;
+    fi;
+
+    if [ -d "$HOME/.sh" ] && [ ! -f "$HOME/.sh/completion_awesome_bash.extra" ];then
+        ln -s "$HOME/bin/awesome-shell/completion.d/completion-awesome-bash" "$HOME/.sh/completion_awesome_bash.extra"
     fi;
 }
 
