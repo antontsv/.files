@@ -145,8 +145,8 @@ whichdir(){
     fi;
 }
 
-get-antontsv-sigcheck-tool(){
-    _help "$@" <<< "Usage: get-antontsv-sigcheck-tool
+get-sigcheck-tool(){
+    _help "$@" <<< "Usage: get-sigcheck-tool
     Downloads utility for PGP signature verifications on commits" || return 1;
     OS=$(uname -s)
     hashsum="expected hash sum will be here"
@@ -183,7 +183,7 @@ get-antontsv-sigcheck-tool(){
 is-commited-by-antontsv(){
   _help_including_empty "$@" <<< "Usage: is-commited-by-antontsv path_to_git_checkout
     Verifies that commit was indeed created by github's @antontsv by verifying commit signature" || return 1;
-    tool="$(get-antontsv-sigcheck-tool)" && [ -d "$1" ]  && "$tool" sigcheck -p "$1"
+    tool="$(get-sigcheck-tool)" && [ -d "$1" ]  && "$tool" sigcheck -p "$1"
 }
 
 install-awesome-bash(){
