@@ -34,3 +34,6 @@ alias gs='git status'
 
 # Say to tmux that UTF-8 is supported
 alias tmux='tmux -u'
+
+# Kubernetes
+alias k='kubectl'
