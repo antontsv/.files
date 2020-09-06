@@ -138,6 +138,7 @@ function! ColorMode(mode)
         set background=light
     else
         set background=dark
+        highlight Normal ctermbg=0
     endif
 endfunction
 
