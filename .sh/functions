@@ -204,4 +204,10 @@ install-awesome-bash(){
     fi;
 }
 
-
+symlink-remove-broken(){
+    _help_including_empty "$@" <<< "Usage: symlink-remove-broken path/to/dir
+    Removes broken symlinks at given directory path" || return 1;
+    dir="$1"
+    [ -d "$dir" ] || (echo "First parameter '$dir' must be a valid directory path" && return 1)
+    find -L "$dir" -type l 2>/dev/null -exec rm {} \;
+}
