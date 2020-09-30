@@ -60,6 +60,10 @@ plugins=(git)
 
 OS=$(uname -s)
 
+# Pick up bash completion rules
+autoload bashcompinit
+bashcompinit
+
 configFileExtensions=("")
 if [[ "$OS" == "Darwin" ]]; then
     configFileExtensions+=("*.macos")
