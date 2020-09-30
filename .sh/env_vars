@@ -51,18 +51,20 @@ if [ -x /usr/libexec/java_home ];then
     export JAVA_HOME=$(/usr/libexec/java_home -F 2>/dev/null || echo "")
 fi
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+if [ -n "$BASH_VERSION" ];then
+    # check the window size after each command and, if necessary,
+    # update the values of LINES and COLUMNS.
+    shopt -s checkwinsize
 
-# Do not autocomplete when accidentally pressing Tab on an empty line.
-shopt -s no_empty_cmd_completion
+    # Do not autocomplete when accidentally pressing Tab on an empty line.
+    shopt -s no_empty_cmd_completion
 
-# Autocorrect typos in path names when using `cd`
-shopt -s cdspell
+    # Autocorrect typos in path names when using `cd`
+    shopt -s cdspell
 
-# Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob
+    # Case-insensitive globbing (used in pathname expansion)
+    shopt -s nocaseglob
+fi;
 
 # Github
 export MY_GITHUB="antontsv"

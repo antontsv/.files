@@ -1,11 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # vim: ft=sh:
 
 # This function is used to parse -h or --help when
 # invoked on other functions
 _help(){
  read -r -d '' HELP_MESSAGE
- if [ $# -gt 0 ] && ([ "$1" = "-h" ] || [ "$1" = "--help" ]);then
+ if [ $# -gt 0 ] && { [ "$1" = "-h" ] || [ "$1" = "--help" ]; };then
     shift;
     echo "$HELP_MESSAGE";
     return 1;
