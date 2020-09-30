@@ -73,12 +73,16 @@ configFileExtensions+=("*.extra")
 sourced=()
 for configType in {env_vars,aliases,functions,path,completion}; do
     for ext in "${configFileExtensions[@]}"; do
-        for configFile in $(find "$HOME/.sh" -name "${configType}$ext"); do
-           [ -f "$configFile" ] && sourced+=("$configFile") && source "$configFile"
-        done
+        while IFS= read -r -d '' configFile
+        do
+            [ -f "$configFile" ] && sourced+=("$configFile") && source "$configFile"
+        done <   <(find "$HOME/.sh" -name "${configType}$ext" -print0)
     done;
 done;
 
-for configFile in $(find "$HOME/.sh" -name "*.extra"); do
-    [ -f "$configFile" ] && ! [[ "${sourced[@]}" == *"$configFile"* ]] && source "$configFile"
-done;
+while IFS= read -r -d '' configFile
+do
+  if [ -f "$configFile" ] && [[ ! "${sourced[*]}" == *"$configFile"* ]];then
+   source "$configFile"
+  fi;
+done <   <(find "$HOME/.sh" -name '*.extra' -print0)
