@@ -76,3 +76,10 @@ if [ -n "$OH_MY_ZSH_PATH" ] && [ -r "$OH_MY_ZSH_PATH/oh-my-zsh.sh" ];then
 
     source $ZSH/oh-my-zsh.sh
 fi;
+
+# Keybindings regardless of oh-my-zsh presence
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey '^k' kill-line
+bindkey '^r' history-incremental-search-backward
+bindkey '^u' kill-whole-line
