@@ -1,3 +1,5 @@
+setopt interactivecomments # allow comments that begin with '#'
+
 # Pick up bash completion rules
 autoload -U compaudit compinit bashcompinit
 bashcompinit
