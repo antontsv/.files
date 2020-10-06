@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ -n "$BASH_VERSION" ] || [ -n "$ZSH_VERSION" ];then
-    if type __start_kubectl 1>/dev/null;then
+    if type __start_kubectl 1>/dev/null 2>&1;then
         complete -o default -F __start_kubectl k
     fi;
 fi;
