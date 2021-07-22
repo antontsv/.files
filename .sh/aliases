@@ -37,3 +37,5 @@ alias tmux='tmux -u'
 
 # Kubernetes
 alias k='kubectl'
+alias kl='kubectl logs'
+alias kgp='kubectl get pods'
