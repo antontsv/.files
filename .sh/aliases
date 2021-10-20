@@ -31,6 +31,7 @@ alias sprofile="source $HOME/.profile"
 # Aliases for git
 alias gg='git grep'
 alias gs='git status'
+alias gr='git fetch origin && git checkout origin/HEAD' # checkout code as it appears on remote
 
 # Say to tmux that UTF-8 is supported
 alias tmux='tmux -u'
